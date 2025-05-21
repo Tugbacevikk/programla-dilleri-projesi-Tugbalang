@@ -1,0 +1,29 @@
+TugbaLang - Backus-Naur Form (BNF) Gramer Tanımı
+
+<program> ::= <komut_listesi>
+
+<komut_listesi> ::= <komut> | <komut> <komut_listesi>
+
+<komut> ::= <atama> ";"
+          | <yazdir> ";"
+          | <kosul>
+          | <dongu>
+          | <yorum>
+
+<atama> ::= "belirle" <degisken> "=" <ifade>
+
+<yazdir> ::= "yaz" <ifade>
+
+<kosul> ::= "eger" <ifade> "ise" "{" <komut_listesi> "}"
+
+<dongu> ::= "dongu" <ifade> "iken" "{" <komut_listesi> "}"
+
+<yorum> ::= "#" <herhangi_bir_yazi>
+
+<ifade> ::= <terim> | <terim> ("+" | "-") <ifade>
+<terim> ::= <faktor> | <faktor> ("*" | "/") <terim>
+<faktor> ::= <sayi> | <degisken> | "(" <ifade> ")"
+
+<degisken> ::= [a-zA-Z_][a-zA-Z0-9_]*
+<sayi> ::= [0-9]+
+<herhangi_bir_yazi> ::= .*
